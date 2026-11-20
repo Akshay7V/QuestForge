@@ -14,6 +14,8 @@ if __name__ == "__main__":
     hero.attack(goblin)
     hero.take_damage(10)
     print(f"hero got damage and balance health {hero.health} ")
+    hero.heal_amount(5)
+    print(f"hero healed and balance health is {hero.health}")
     print(goblin.describe())
     
    

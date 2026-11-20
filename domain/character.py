@@ -26,6 +26,8 @@ class Character:
         
         
     def heal_amount(self,amount:int)->None:
+        if amount < 0 :
+            raise ValueError("heal amount cannt be negative value")
         self._health = min(self.__max_health,self._health+amount)
         
     def attack(self,target:"Character")->None:
