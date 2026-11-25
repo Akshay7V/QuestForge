@@ -1,9 +1,10 @@
 from domain.character import Character
-
+from domain.classes import Warrior,Mage,Cleric,Rouge
+from domain.battle import run_special_round,total_party_damage
 
 if __name__ == "__main__":
     hero = Character("Aria",100,15)
-      
+    
     goblin = Character("Goblin",50,5)
     
 
@@ -17,6 +18,47 @@ if __name__ == "__main__":
     hero.heal_amount(5)
     print(f"hero healed and balance health is {hero.health}")
     print(goblin.describe())
+    
+    print("---------------------------------------------------------------------------")
+    warrior = Warrior("Bram")
+    mage = Mage("Sylla")
+    cleric = Cleric("Kade")
+    
+    warrior.attack(mage)
+    mage.special_ability(warrior)
+    print(f"Bram HP:{warrior.health},sylla HP: {mage.health}")
+    print("---------------------------------------------------------------------------")
+    print(f"{cleric.name} heals {warrior.name} for {cleric.health} Hp!Now,{warrior.name} have {warrior.health}Hp!")
+    print("---------------------------------------------------------------------------")
+
+    if __name__ == "__main__":
+        party = [Warrior("Bram"),Mage("Sylla"),Rouge("d.cruse"),Cleric("Kade")]
+        dummy = Warrior("training Dummy")
+        
+        for member in party:
+            run_special_round(member,dummy)
+            print(f"Dummy HP : {dummy.health}\n")
+            print("---------------------------------------------------------------------------")
+            
+            # for member1 in party:
+                
+            #     total_party_damage(member1,dummy)  
+            #     total_damage += member1.health(dummy)  
+            #     print(f"Dummy HP : {dummy.health}\n")               
+            
+        
+            
+    # Replace the `for member1 in party:` loop with just this:
+            total_party_damage(party, dummy)
+            print(f"Dummy HP : {dummy.health}\n")
+            
+
+    
+    
+    
+    
+    
+    
     
    
 
