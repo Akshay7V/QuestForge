@@ -3,21 +3,21 @@ from domain.classes import Warrior,Mage,Cleric,Rouge
 from domain.battle import run_special_round,total_party_damage
 
 if __name__ == "__main__":
-    hero = Character("Aria",100,15)
+    # hero = Character("Aria",100,15)
     
-    goblin = Character("Goblin",50,5)
-    
-
-    print(hero.describe())
-    print(goblin.describe())
+    # goblin = Character("Goblin",50,5)
     
 
-    hero.attack(goblin)
-    hero.take_damage(10)
-    print(f"hero got damage and balance health {hero.health} ")
-    hero.heal_amount(5)
-    print(f"hero healed and balance health is {hero.health}")
-    print(goblin.describe())
+    # print(hero.describe())
+    # print(goblin.describe())
+    
+
+    # hero.attack(goblin)
+    # hero.take_damage(10)
+    # print(f"hero got damage and balance health {hero.health} ")
+    # hero.heal_amount(5)
+    # print(f"hero healed and balance health is {hero.health}")
+    # print(goblin.describe())
     
     print("---------------------------------------------------------------------------")
     warrior = Warrior("Bram")
