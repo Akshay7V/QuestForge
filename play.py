@@ -1,6 +1,9 @@
 from domain.character import Character
 from domain.classes import Warrior,Mage,Cleric,Rouge
 from domain.battle import run_special_round,total_party_damage
+from domain.exceptions import QuestForgeError,InventoryEmptyError
+from domain.inventory import inventory
+
 
 if __name__ == "__main__":
     # hero = Character("Aria",100,15)
@@ -23,9 +26,24 @@ if __name__ == "__main__":
     warrior = Warrior("Bram")
     mage = Mage("Sylla")
     cleric = Cleric("Kade")
+    inv = inventory()
     
-    warrior.attack(mage)
-    mage.special_ability(warrior)
+    try:     
+        mage.special_ability(warrior)
+        mage.special_ability(warrior)
+        mage.special_ability(warrior) 
+        
+    except QuestForgeError as e:
+        print(f"Action failed: {e}")
+        
+        
+    try:
+        inv.use(0,warrior)
+        inv.use(1,warrior)
+    except InventoryEmptyError as f:
+        print(f"Action failed {f}")
+        
+        
     print(f"Bram HP:{warrior.health},sylla HP: {mage.health}")
     print("---------------------------------------------------------------------------")
     print(f"{cleric.name} heals {warrior.name} for {cleric.health} Hp!Now,{warrior.name} have {warrior.health}Hp!")
@@ -51,6 +69,7 @@ if __name__ == "__main__":
     # Replace the `for member1 in party:` loop with just this:
             total_party_damage(party, dummy)
             print(f"Dummy HP : {dummy.health}\n")
+
             
 
     

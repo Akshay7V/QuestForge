@@ -1,6 +1,6 @@
 from abc import ABC ,abstractmethod
 from domain.inventory import inventory
-
+from domain.exceptions import DeadCharacterError
 class Character(ABC):
     def __init__(self,name:str,health:int,attack_power:int):
         self.name = name
@@ -48,6 +48,13 @@ class Character(ABC):
          """Every concrete Character MUST define its own special move."""
          raise NotImplementedError
 
+
+
+
+    def attack(self,target:"Character")->None:
+        if not self.is_alive:
+            raise DeadCharacterError(f"{self.name} is dead cannot act")
+        target.take_damage(self.attack_power)
 
     # Add this inside the Character.__init__ method:
     # self.inventory = Inventory()
